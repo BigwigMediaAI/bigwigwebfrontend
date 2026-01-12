@@ -1,0 +1,410 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #f97316;
+}
+@keyframes twinkle {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes twinkle-soft {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 1.2s ease-in-out infinite;
+}
+
+.animate-twinkle-soft {
+  animation: twinkle-soft 2s ease-in-out infinite;
+}
+
+/* ===== RECTANGLE GLASS NAV (IMAGE MATCH) ===== */
+.nav-rect {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px; /* rectangle, not pill */
+  position: relative;
+  z-index: 1;
+}
+
+/* ================================
+   CTA BORDER RUNNER (FINAL)
+================================ */
+
+.cta-wrap {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* BORDER RING */
+.cta-border {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(80, 160, 255, 0.9),
+    transparent
+  );
+  background-size: 300% 100%;
+  animation: border-run 1.8s linear infinite;
+  pointer-events: none;
+}
+
+/* INNER BUTTON */
+.cta-inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 36px;
+  border-radius: 9999px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 1;
+}
+
+/* HOVER — STOP RUN + GLOW */
+.cta-wrap:hover .cta-border {
+  animation-play-state: paused;
+}
+
+.cta-wrap:hover .cta-inner {
+  box-shadow: 0 0 18px rgba(80, 160, 255, 0.45),
+    0 0 36px rgba(80, 160, 255, 0.35);
+}
+
+/* ANIMATION */
+@keyframes border-run {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+/* SOFT BORDER */
+.nav-rect::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+/* VERY SUBTLE INNER LIGHT */
+.nav-rect::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.curtain-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.curtain-overlay {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  transform-origin: right;
+  transform: scaleX(1);
+  z-index: 20;
+}
+
+.curtain-animate {
+  animation: curtainOpen 1.4s ease-out forwards;
+}
+
+.curtain-delay {
+  animation-delay: 0.35s;
+}
+
+@keyframes curtainOpen {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Glass hover stays same */
+.glass-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-hover::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: rotate(25deg);
+}
+
+.glass-hover:hover::after {
+  left: 130%;
+  transition: left 0.8s ease-in-out;
+}
+
+/* Base Button */
+.click-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 120px;
+  padding: 0 18px;
+  height: 44px;
+
+  border: 1px solid;
+  border-radius: 5px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap; /* 🔑 prevent breaking */
+
+  color: #979695;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+  box-sizing: border-box;
+}
+
+/* STYLE 5 */
+.btn-style5 {
+  border-color: #979695;
+  color: #979695;
+  box-shadow: 0.3em 0.3em 0 #200cce;
+}
+
+.btn-style5:hover {
+  box-shadow: -0.3em -0.3em 0 #979695;
+  background-color: #ee3d47;
+  border-color: #979695;
+  color: #ffffff;
+}
+
+/* ===== WRAPPER ===== */
+.orbital-wrapper {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 60px;
+  height: 60px;
+  z-index: 9999;
+}
+
+/* ===== MAIN ORB ===== */
+.main-orb {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle, #ff9f1c, #ff6a00);
+  box-shadow: 0 0 20px rgba(255, 106, 0, 0.55),
+    inset 0 0 12px rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  position: relative;
+}
+
+.orb-core {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== CHILD BUTTONS ===== */
+.orb-btn {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.2);
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+/* ===== POSITIONS (CARDINAL) ===== */
+.orb-btn.up {
+  bottom: 72px;
+  right: 0px;
+  color: #ff595e;
+}
+
+.orb-btn.right {
+  right: 72px;
+  bottom: -10px;
+  color: #4fc3f7;
+}
+
+.orb-btn.down {
+  bottom: 83%;
+  right: 58px;
+  color: #25d366;
+}
+
+/* ===== OPEN STATE ===== */
+.orbital-wrapper.open .orb-btn {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ===== HOVER ===== */
+.orb-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 16px currentColor;
+}
+
+.main-orb:hover {
+  transform: scale(1.05);
+}
+
+.main-orb svg {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+
+/* footer */
+
+.cta-border-btn {
+  position: relative;
+  padding: 12px 32px;
+  border-radius: 9999px;
+  background: linear-gradient(#000, #000) padding-box,
+    linear-gradient(90deg, transparent, rgba(80, 160, 255, 0.9), transparent)
+      border-box;
+  border: 1.5px solid transparent;
+  color: white;
+  font-size: 15px;
+  animation: border-run 2s linear infinite;
+}
+
+.cta-border-btn:hover {
+  animation-play-state: paused;
+  box-shadow: 0 0 18px rgba(80, 160, 255, 0.45),
+    0 0 36px rgba(80, 160, 255, 0.35);
+}
+
+@keyframes border-run {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+/* why choose */
+/* SLOW ORBIT ROTATION */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 18s linear infinite;
+}
+
+/* ORBIT CONTAINER */
+.orbit {
+  width: 420px;
+  height: 420px;
+  animation: spinSlow 14s linear infinite;
+}
+
+/* INDIVIDUAL ICON POSITIONS */
+.orbit-youtube {
+  animation-duration: 12s;
+}
+
+.orbit-drive {
+  animation-duration: 18s;
+}
+
+/* ICON STYLE */
+.orbit-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

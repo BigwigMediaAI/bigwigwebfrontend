@@ -412,7 +412,6 @@ const Nav: React.FC = () => {
                 className="flex items-center gap-2 hover:text-white"
               >
                 <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4" />
-                support@bigwigmediadigital.com
               </a>
 
               <a
@@ -420,12 +419,11 @@ const Nav: React.FC = () => {
                 className="flex items-center gap-2 hover:text-white"
               >
                 <FontAwesomeIcon icon={faPhone} className="w-4 h-4" />
-                +91 78279 77879
+                +91
               </a>
 
               <div className="flex items-center gap-2">
                 <FontAwesomeIcon icon={faLocationDot} className="w-4 h-4" />
-                Plot # 2, Sanjay Nagar, Gulabi Bagh, Delhi 110007, India
               </div>
             </div>
             <h4 className="text-sm text-gray-400 mb-2">Follow us</h4>
@@ -529,19 +527,15 @@ const Nav: React.FC = () => {
             </h4>
             <div className="flex items-center gap-2 mb-2 ">
               <MapPin className="w-4 h-4 text-[#a7ebf2]" />
-              <span className="text-gray-300 text-base">
-                Plot #2, Sanjay Nagar, Gulabi Bagh, Delhi 110007, India
-              </span>
+              <span className="text-gray-300 text-base"></span>
             </div>
             <div className="flex items-center gap-2 mb-2">
               <Phone className="w-4 h-4 text-[#a7ebf2]" />
-              <span className="text-gray-300 text-base">+91 78279 77879</span>
+              <span className="text-gray-300 text-base">+91 </span>
             </div>
             <div className="flex items-center gap-2 mb-2">
               <FaEnvelope className="w-4 h-4 text-[#a7ebf2]" />
-              <span className="text-gray-300 text-base">
-                support@bigwigmediadigital.com
-              </span>
+              <span className="text-gray-300 text-base"></span>
             </div>
 
             <ButtonFill

@@ -350,7 +350,7 @@ const Nav: React.FC = () => {
         </div>
       </div>
 
-      {/* Sidebar ( mobile) */}
+      {/* Sidebar ( mobile)  */}
       <div
         className={`lg:hidden fixed inset-0 z-50 flex transition-transform duration-500 ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"

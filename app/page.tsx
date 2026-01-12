@@ -1,7 +1,7 @@
 // import AboutUs from "../../components/About";
 // import Blogs from "../../components/Blog";
 // import CaseCard from "../../components/CaseCard";
-// import Client from "../../components/Clients";
+import Client from "../Components/tickle";
 // import FlipCard from "../../components/FlipCard";
 import Hero from "../Components/Hero";
 // import HowWeWork from "../../components/HowWeWork";
@@ -15,6 +15,7 @@ import Nav from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import WhyChooseUs from "@/Components/WhyChoose";
 import BlogSection from "@/Components/Blog";
+import Services from "@/Components/Services";
 // import ServicesPage from "../../components/Services";
 // import RainbowSteps from "../../components/RainbowSteps";
 
@@ -32,6 +33,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <WhyChooseUs />
+      <Services />
       <BlogSection />
       {/* <Partners /> */}
       {/* <Stats /> */}

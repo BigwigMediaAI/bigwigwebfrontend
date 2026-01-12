@@ -68,11 +68,11 @@ export default function Hero() {
         </div>
 
         {/* HEADINGS */}
-        <h1 className="text-[#e43e46] font-light leading-tight text-[36px] sm:text-[48px] md:text-[64px]">
+        <h1 className="text-[#3689cd] italic font-light leading-tight text-[36px] sm:text-[48px] md:text-[64px]">
           YOUR BUSINESS
         </h1>
 
-        <h2 className="mt-2 text-[#3689cd] italic font-serif text-[38px] sm:text-[50px] md:text-[64px]">
+        <h2 className="mt-2 text-[#e43e46] italic font-serif font-semibold text-[38px] sm:text-[50px] md:text-[64px]">
           ONE Solution
         </h2>
 

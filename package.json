@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.13.2",
     "fuse.js": "^7.1.0",
     "lucide-react": "^0.562.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

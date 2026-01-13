@@ -313,7 +313,7 @@ const Nav: React.FC = () => {
             {/* Desktop Sidebar Button */}
             <button
               onClick={() => setSidebarOpen(true)}
-              className="hidden md:inline-flex p-2 text-white hover:bg-[#A7EBF2] rounded cursor-pointer"
+              className="hidden md:inline-flex p-2 text-white hover:bg-[var(--secondary-color)] rounded cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -334,7 +334,7 @@ const Nav: React.FC = () => {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setSidebarOpen(true)}
-              className="md:hidden p-2 rounded text-white hover:bg-[#A7EBF2]"
+              className="md:hidden p-2 rounded text-white hover:bg-[var(--secondary-color)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +464,7 @@ const Nav: React.FC = () => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <aside className="relative ml-auto max-w-xl bg-[#023859] text-white h-full p-6 shadow-xl flex flex-col transition-transform duration-500">
+        <aside className="relative ml-auto max-w-xl bg-black text-white h-full p-6 shadow-xl flex flex-col transition-transform duration-500">
           <div className="flex items-center justify-between mb-6">
             <Link href="/">
               <Image src={logo} alt="logo" className="w-40" />

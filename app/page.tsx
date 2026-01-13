@@ -15,6 +15,8 @@ import Nav from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import WhyChooseUs from "@/Components/WhyChoose";
 import BlogSection from "@/Components/Blog";
+import About from "@/Components/About";
+import Features from "@/Components/Features";
 import Services from "@/Components/Services";
 // import ServicesPage from "../../components/Services";
 // import RainbowSteps from "../../components/RainbowSteps";
@@ -32,7 +34,9 @@ export default function Home() {
       />
       <Nav />
       <Hero />
+      <About />
       <WhyChooseUs />
+      <Features />
       <Services />
       <BlogSection />
       {/* <Partners /> */}

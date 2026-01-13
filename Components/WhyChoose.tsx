@@ -6,7 +6,7 @@ import ButtonFill from "./ButtonFill";
 
 export default function WhyChooseUs() {
   return (
-    <section className=" relative bg-black overflow-hidden py-28">
+    <section className=" relative bg-black overflow-hidden py-16 md:py-28 ">
       {/* BACKGROUND STARS */}
       <div className=" absolute inset-0 pointer-events-none">
         {Array.from({ length: 40 }).map((_, i) => (
@@ -28,10 +28,10 @@ export default function WhyChooseUs() {
             Why Choose Us
           </span>
 
-          <h2 className="text-white text-4xl md:text-5xl font-light leading-tight">
+          <h2 className="text-[var(--primary-color)] text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
             Your Success
           </h2>
-          <h3 className="mt-2 text-[#ff9f4a] italic font-serif text-4xl md:text-5xl">
+          <h3 className="mt-3 text-[var(--secondary-color)] italic font-serif text-4xl md:text-5xl">
             Our Commitment
           </h3>
 
@@ -41,11 +41,16 @@ export default function WhyChooseUs() {
             social media profiles and creating shareable content.
           </p>
 
-          <ButtonFill text="Get in Touch" className="hidden md:block mt-11" />
+          <div className="mt-10">
+            <button className="cta-wrap">
+              <span className="cta-border"></span>
+              <span className="cta-inner">Contact Us</span>
+            </button>
+          </div>
         </div>
 
         {/* RIGHT ORBITAL SYSTEM */}
-        <div className="relative flex justify-center items-center">
+        <div className="relative lg:flex justify-center items-center hidden ">
           {/* ORBIT RING */}
           <div className="absolute w-[420px] h-[420px] rounded-full border border-blue-500/30 animate-spin-slow" />
 

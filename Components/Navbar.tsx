@@ -190,7 +190,7 @@ const Nav: React.FC = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden lg:flex justify-center col-span-3">
-            <ul className="nav-rect flex items-center gap-8 px-10 py-2 text-white relative">
+            <ul className="nav-rect flex items-center gap-8 px-10 text-white relative">
               <li
                 className="relative flex items-center gap-1"
                 onMouseEnter={() => setServicesOpen(true)}
@@ -198,7 +198,7 @@ const Nav: React.FC = () => {
               >
                 <Link
                   href="/services"
-                  className="px-2 py-2 flex items-center gap-1 hover:text-[#A7EBF2] font-medium"
+                  className="px-2 py-3 flex items-center gap-1 hover:text-[var(--secondary-color)] font-medium"
                 >
                   Services
                   <svg
@@ -223,12 +223,12 @@ const Nav: React.FC = () => {
                 <div
                   role="menu"
                   aria-hidden={!servicesOpen}
-                  className={`absolute top-full w-[900px]
+                  className={`absolute top-12 w-[900px]
   -translate-x-12
   text-white transition-all duration-300
-  bg-black/40 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl
+  bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl
   before:absolute before:inset-0 before:rounded-2xl
-  before:bg-gradient-to-b before:from-white/5 before:to-transparent
+  before:bg-gradient-to-b before:from-white/20 before:to-transparent
   before:pointer-events-none
   ${
     servicesOpen
@@ -248,7 +248,7 @@ const Nav: React.FC = () => {
                               href={svc.slug}
                               className="flex items-start gap-3 p-2 rounded"
                             >
-                              <Icon className="w-5 h-5 mt-1 text-[#A7EBF2]" />
+                              <Icon className="w-5 h-5 mt-1 text-[var(--secondary-color)]" />
                               <div className=" text-sm">{svc.title}</div>
                             </Link>
                           );
@@ -261,7 +261,7 @@ const Nav: React.FC = () => {
               <li>
                 <Link
                   href="/clients"
-                  className="text-sm text-gray-200 hover:text-white transition"
+                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
                 >
                   Clients
                 </Link>
@@ -276,12 +276,18 @@ const Nav: React.FC = () => {
                 </Link>
               </li> */}
               <li>
-                <Link href="/about" className="px-2 py-2 hover:text-[#A7EBF2]">
+                <Link
+                  href="/about"
+                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                >
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/blogs" className="px-2 py-2 hover:text-[#A7EBF2]">
+                <Link
+                  href="/blogs"
+                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                >
                   Blog
                 </Link>
               </li>
@@ -289,7 +295,7 @@ const Nav: React.FC = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-gray-200 hover:text-white transition"
+                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
                 >
                   Contact Us
                 </Link>
@@ -299,11 +305,10 @@ const Nav: React.FC = () => {
 
           {/* Right: get in touch + mobile menu */}
           <div className="flex items-center justify-end gap-3 col-span-1">
-            <Button
-              onClick={() => setIsPopupOpen(true)}
-              text="Get in Touch"
-              className="hidden md:block"
-            />
+            <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
+              <span className="cta-border"></span>
+              <span className="cta-inner">Get In Touch</span>
+            </button>
 
             {/* Desktop Sidebar Button */}
             <button
@@ -483,7 +488,7 @@ const Nav: React.FC = () => {
           </div>
 
           <div className="flex-1">
-            <h4 className="text-xl font-semibold mb-2 text-[#a7ebf2]">
+            <h4 className="text-xl font-semibold mb-2 text-[var(--secondary-color)]">
               About Us
             </h4>
             <p className="text-gray-200 text-base mb-4">
@@ -494,7 +499,7 @@ const Nav: React.FC = () => {
 
             <hr className="border-gray-700 my-4" />
 
-            <h4 className="text-xl font-semibold mb-2 text-[#a7ebf2]">
+            <h4 className="text-xl font-semibold mb-2 text-[var(--secondary-color)]">
               Follow Us
             </h4>
             <div className="flex gap-3 mb-4">
@@ -522,19 +527,19 @@ const Nav: React.FC = () => {
             <hr className="border-gray-700 my-4" />
 
             {/* Contact Us */}
-            <h4 className="text-xl font-semibold mb-2 text-[#a7ebf2]">
+            <h4 className="text-xl font-semibold mb-2 text-[var(--secondary-color)]">
               Contact Us
             </h4>
             <div className="flex items-center gap-2 mb-2 ">
-              <MapPin className="w-4 h-4 text-[#a7ebf2]" />
+              <MapPin className="w-4 h-4 text-[var(--secondary-color)]" />
               <span className="text-gray-300 text-base"></span>
             </div>
             <div className="flex items-center gap-2 mb-2">
-              <Phone className="w-4 h-4 text-[#a7ebf2]" />
+              <Phone className="w-4 h-4 text-[var(--secondary-color)]" />
               <span className="text-gray-300 text-base">+91 </span>
             </div>
             <div className="flex items-center gap-2 mb-2">
-              <FaEnvelope className="w-4 h-4 text-[#a7ebf2]" />
+              <FaEnvelope className="w-4 h-4 text-[var(--secondary-color)]" />
               <span className="text-gray-300 text-base"></span>
             </div>
 

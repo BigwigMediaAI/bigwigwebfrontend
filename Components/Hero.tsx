@@ -5,7 +5,7 @@ import seoIcon from "../Assets/rocket.svg"; // ← use your actual logo/icon
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black flex items-center justify-center">
+    <section className="relative h-[70vh] lg:min-h-screen overflow-hidden bg-black flex items-center justify-center">
       {/* GRID BACKGROUND */}
       <div
         className="absolute inset-0 opacity-30"
@@ -68,11 +68,11 @@ export default function Hero() {
         </div>
 
         {/* HEADINGS */}
-        <h1 className="text-[#3689cd] italic font-light leading-tight text-[36px] sm:text-[48px] md:text-[64px]">
+        <h1 className="text-[var(--primary-color)] italic font-light leading-tight text-[36px] sm:text-[48px] md:text-[64px]">
           YOUR BUSINESS
         </h1>
 
-        <h2 className="mt-2 text-[#e43e46] italic font-serif font-semibold text-[38px] sm:text-[50px] md:text-[64px]">
+        <h2 className="mt-2 text-[var(--secondary-color)] italic font-serif font-semibold text-[38px] sm:text-[50px] md:text-[64px]">
           ONE Solution
         </h2>
 

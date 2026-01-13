@@ -285,7 +285,7 @@ const Nav: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/blogs"
+                  href="/blog"
                   className="px-2 py-2 hover:text-[var(--secondary-color)]"
                 >
                   Blog

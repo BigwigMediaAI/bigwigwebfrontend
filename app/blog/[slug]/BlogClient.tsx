@@ -1,0 +1,138 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Navbar from "../../../Components/Navbar";
+import Footer from "../../../Components/Footer";
+import Image from "next/image";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import BlogSidebar from "../../../Components/BlogSidebar";
+
+export default function BlogClient({
+  blog,
+  relatedBlogs,
+}: {
+  blog: any;
+  relatedBlogs: any[];
+}) {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  // ✅ Listen for popup buttons inside blog HTML
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("[data-open-popup='true']")) {
+        setIsPopupOpen(true);
+      }
+    };
+
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, []);
+
+  return (
+    <div className="bg-black text-white min-h-screen">
+      <Navbar />
+
+      {/* GRID BACKGROUND */}
+      <div className="relative pt-[90px] md:pt-[120px] pb-20">
+        <div
+          className="absolute inset-0 opacity-30 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            backgroundSize: "120px 120px",
+          }}
+        />
+
+        <div className="relative w-11/12 md:w-5/6 max-w-7xl mx-auto">
+          {/* BLOG HEADER (GLASS) */}
+          <section className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-10 mb-8">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+              {blog.title}
+            </h1>
+
+            <p className="text-gray-400 mt-4 text-sm md:text-base">
+              By <span className="text-white font-semibold">{blog.author}</span>{" "}
+              • {new Date(blog.datePublished).toLocaleDateString()}
+            </p>
+          </section>
+
+          {/* COVER IMAGE */}
+          {blog.coverImage && (
+            <div className="relative w-full h-[260px] sm:h-[380px] md:h-[520px] lg:h-[650px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+              <Image
+                src={blog.coverImage}
+                alt={blog.coverImageAlt || blog.title}
+                fill
+                className="object-cover"
+                priority
+              />
+
+              {/* DARK OVERLAY FOR PREMIUM LOOK */}
+              <div className="absolute inset-0 bg-black/30" />
+            </div>
+          )}
+
+          {/* BLOG CONTENT + SIDEBAR */}
+          <section className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* LEFT – BLOG CONTENT */}
+            <article className="lg:col-span-8">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
+                {/* IMPORTANT: Dark-mode prose */}
+                <div
+                  className="
+                    blog-content
+                    prose prose-lg max-w-none
+                    prose-headings:text-white
+                    prose-p:text-gray-300
+                    prose-strong:text-white
+                    prose-a:text-[var(--secondary-color)]
+                    prose-a:no-underline hover:prose-a:underline
+                    prose-ul:text-gray-300
+                    prose-ol:text-gray-300
+                    prose-li:text-gray-300
+                    prose-blockquote:text-gray-200
+                    prose-blockquote:border-white/20
+                    prose-code:text-white
+                    prose-pre:bg-black/40
+                    prose-pre:border prose-pre:border-white/10
+                    prose-pre:rounded-2xl
+                  "
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              </div>
+            </article>
+
+            {/* RIGHT – SIDEBAR */}
+            <aside className="lg:col-span-4">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl lg:sticky lg:top-32">
+                <BlogSidebar relatedBlogs={relatedBlogs} />
+              </div>
+            </aside>
+          </section>
+        </div>
+      </div>
+
+      <Footer />
+
+      {/* MOBILE CTA BAR */}
+      <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">
+        <a
+          href="tel:+919212717362"
+          className="w-1/2 bg-white/10 backdrop-blur-md border-t border-white/10 text-white py-3 flex justify-center gap-2"
+        >
+          <FaPhoneAlt /> Call Us
+        </a>
+
+        <a
+          href="https://wa.me/+919212717362"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-1/2 bg-[var(--secondary-color)] text-black py-3 flex justify-center gap-2 font-semibold"
+        >
+          <FaWhatsapp /> WhatsApp
+        </a>
+      </div>
+    </div>
+  );
+}

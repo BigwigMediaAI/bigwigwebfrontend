@@ -3,7 +3,7 @@
 import Footer from "../../../Components/Footer";
 import Nav from "../../../Components/Navbar";
 
-import hero from "../../../Assets/Services/hero.jpg";
+import hero from "../../../Assets/services/hero.jpg";
 import image from "../../../Assets/Services/hero.jpg";
 
 import Slider from "react-slick";

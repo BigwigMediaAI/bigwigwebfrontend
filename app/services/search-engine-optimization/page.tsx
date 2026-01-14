@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Nav from "../../../Components/Navbar";
 import Footer from "../../../Components/Footer";
-import hero from "../../../Assets/Services/hero.jpg";
+import hero from "../../../Assets/services/hero.jpg";
 import seoImg from "../../../Assets/services/3.jpg";
 import Image from "next/image";
 import ButtonFill from "../../../Components/ButtonFill";

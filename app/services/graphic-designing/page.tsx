@@ -3,7 +3,7 @@
 import Footer from "../../../Components/Footer";
 import Nav from "../../../Components/Navbar";
 
-import Hero from "../../../Assets/Services/hero.jpg";
+import Hero from "../../../Assets/services/hero.jpg";
 import Image from "next/image";
 
 import ButtonFill from "../../../Components/ButtonFill";

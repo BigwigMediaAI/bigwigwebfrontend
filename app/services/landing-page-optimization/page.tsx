@@ -1,12 +1,9 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
-import Nav from "../../../../components/Nav";
-import hero from "../../../../Assets/Services hero/Landing_Page.jpg";
-import OurProcess from "../../../../components/OurProcess";
-import WhyBigwig from "../../../../components/WhyBigwig";
-import Footer from "../../../../components/Footer";
+import Nav from "../../../Components/Navbar";
+import hero from "../../../Assets/services/hero.jpg";
+import Footer from "../../../Components/Footer";
 import Slider from "react-slick";
-import landing from "../../../../Assets/services/11.jpg";
 import {
   FaGoogle,
   FaFunnelDollar,
@@ -15,7 +12,6 @@ import {
   FaVideo,
   FaMobileAlt,
 } from "react-icons/fa";
-import ContactForm from "../../../../components/ContactForm";
 import Image from "next/image";
 
 const resultItems = [
@@ -151,9 +147,6 @@ function LandinPageOptimization() {
               </button>
             </a>
           </div>
-
-          {/* Right Form */}
-          <ContactForm />
         </div>
       </section>
       <section className="bg-white py-12">
@@ -168,9 +161,7 @@ function LandinPageOptimization() {
               <p className="text-lg text-gray-700">
                 At{" "}
                 <strong>
-                  <a href="https://www.bigwigdigital.in/">
-                    BigWig Digital
-                  </a>{" "}
+                  <a href="https://www.bigwigdigital.in/">BigWig Digital</a>{" "}
                 </strong>
                 , we offer performance-driven Landing Page Optimization Services
                 tailored to turn your visitors into customers. Whether your
@@ -179,13 +170,6 @@ function LandinPageOptimization() {
                 decision-making process. A slow, cluttered, or poorly designed
                 landing page can drive them away instantly.
               </p>
-            </div>
-            <div className="relative rounded-3xl shadow-lg flex items-center justify-center">
-              <Image
-                src={landing}
-                alt="Landing Page Optimization Services"
-                className="w-full h-[40vh] rounded-xl shadow-lg"
-              />
             </div>
           </div>
 
@@ -424,9 +408,6 @@ function LandinPageOptimization() {
           </div>
         </div>
       </section>
-
-      <OurProcess />
-      <WhyBigwig />
 
       {/* Final Call-to-Action */}
       <div className=" py-12 bg-[var(--primary-color)]">

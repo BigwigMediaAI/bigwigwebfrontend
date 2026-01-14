@@ -3,7 +3,7 @@
 import { useState, SetStateAction } from "react";
 import Nav from "../../../Components/Navbar";
 import Footer from "../../../Components/Footer";
-import hero from "../../../Assets/Services/hero.jpg";
+import hero from "../../../Assets/services/hero.jpg";
 import web from "../../../Assets/services/1.jpg";
 import Image from "next/image";
 import ButtonFill from "../../../Components/ButtonFill";

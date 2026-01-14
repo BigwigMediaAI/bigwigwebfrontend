@@ -1,7 +1,7 @@
 "use client";
 
 import Nav from "../../../Components/Navbar";
-import hero from "../../../Assets/Services/hero.jpg";
+import hero from "../../../Assets/services/hero.jpg";
 import influencer from "../../../Assets/services/15.jpg";
 import Footer from "../../../Components/Footer";
 

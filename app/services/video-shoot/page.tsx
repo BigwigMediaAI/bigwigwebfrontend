@@ -1,13 +1,11 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
-import Nav from "../../../../components/Nav";
-import hero from "../../../../Assets/Services hero/video_shoot.jpg";
-import videoshoot from "../../../../Assets/services/13.jpg";
-import OurProcess from "../../../../components/OurProcess";
-import WhyBigwig from "../../../../components/WhyBigwig";
-import Footer from "../../../../components/Footer";
+import Nav from "../../../Components/Navbar";
+import hero from "../../../Assets/services/hero.jpg";
+import videoshoot from "../../../Assets/services/13.jpg";
+
+import Footer from "../../../Components/Footer";
 import Slider from "react-slick";
-import ContactForm from "../../../../components/ContactForm";
 import Image from "next/image";
 
 const services = [
@@ -119,9 +117,6 @@ function VideoShoot() {
               </button>
             </a>
           </div>
-
-          {/* Right Form - 1/3 */}
-          <ContactForm />
         </div>
       </section>
 
@@ -323,9 +318,6 @@ function VideoShoot() {
           ))}
         </div>
       </div>
-
-      <OurProcess />
-      <WhyBigwig />
 
       <div className="bg-[var(--primary-color)] text-white py-12 text-center ">
         {/* Headline */}

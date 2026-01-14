@@ -1,11 +1,9 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
-import Nav from "../../../../components/Nav";
-import hero from "../../../../Assets/Services hero/public_relation.jpg";
-import publicRelation from "../../../../Assets/services/14.jpg";
-import OurProcess from "../../../../components/OurProcess";
-import WhyBigwig from "../../../../components/WhyBigwig";
-import Footer from "../../../../components/Footer";
+import Nav from "../../../Components/Navbar";
+import hero from "../../../Assets/services/hero.jpg";
+import publicRelation from "../../../Assets/services/14.jpg";
+import Footer from "../../../Components/Footer";
 import Slider from "react-slick";
 import {
   FaBullhorn,
@@ -16,7 +14,6 @@ import {
   FaHandshake,
   FaRocket,
 } from "react-icons/fa";
-import ContactForm from "../../../../components/ContactForm";
 import Image from "next/image";
 
 const services = [
@@ -160,9 +157,6 @@ function PublicRelation() {
               </button>
             </a>
           </div>
-
-          {/* Right Form */}
-          <ContactForm />
         </div>
       </section>
 
@@ -433,9 +427,7 @@ function PublicRelation() {
               company entering new regions, or a lifestyle brand building
               emotional connection, PR becomes your voice in a noisy market.{" "}
               <strong>
-                <a href="https://www.bigwigmediadigital.com/">
-                  BigWig Digital
-                </a>{" "}
+                <a href="https://www.bigwigmediadigital.com/">BigWig Digital</a>{" "}
               </strong>{" "}
               provides public relation services and across tailored to your
               size, sector, and stage of growth.
@@ -443,9 +435,6 @@ function PublicRelation() {
           </div>
         </div>
       </section>
-
-      <OurProcess />
-      <WhyBigwig />
       <Footer />
     </div>
   );

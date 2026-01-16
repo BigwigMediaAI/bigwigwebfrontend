@@ -182,7 +182,7 @@ const Nav: React.FC = () => {
               <Image
                 src={logo}
                 alt="Bigwig Digital"
-                className="w-16 md:w-24"
+                className="w-24 md:w-24"
                 draggable={false}
               />
             </Link>

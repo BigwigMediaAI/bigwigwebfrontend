@@ -372,13 +372,16 @@ function SocialMediaOptimization() {
               <Slider {...settings}>
                 {processItems.map((item, index) => (
                   <div key={index} className="px-2">
-                    <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 space-y-4">
-                      <h3 className="text-xl font-semibold text-[var(--color5)]">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed text-justify">
-                        {item.content}
-                      </p>
+                    <div className="h-full min-h-[260px] flex flex-col justify-between p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                      <div className="space-y-4">
+                        <h3 className="text-xl font-semibold text-[var(--color5)]">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-gray-300 leading-relaxed text-justify">
+                          {item.content}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}

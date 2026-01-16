@@ -404,7 +404,7 @@ const Nav: React.FC = () => {
               { title: "Services", slug: "/services" },
               { title: "Our Works", slug: "/our-works" },
               { title: "About", slug: "/about" },
-              { title: "Blog", slug: "/blogs" },
+              { title: "Blog", slug: "/blog" },
               { title: "Clients", slug: "/clients" },
               { title: "Contact Us", slug: "/contact" },
             ].map((link) => (

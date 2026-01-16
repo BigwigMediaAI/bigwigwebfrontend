@@ -213,7 +213,7 @@ function InfluencerMarketing() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <title>Influencer Marketing Solutions</title>
       <link
         rel="canonical"

@@ -226,7 +226,7 @@ export default function EmailMarketing() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <title>Result-Driven Email Marketing</title>
       <link
         rel="canonical"

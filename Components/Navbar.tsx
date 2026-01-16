@@ -307,7 +307,16 @@ const Nav: React.FC = () => {
           <div className="flex items-center justify-end gap-3 col-span-1">
             <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
               <span className="cta-border"></span>
-              <span className="cta-inner">Get In Touch</span>
+
+              <span
+                className="
+      cta-inner
+      !px-3 !py-1.5 !text-[11px] !rounded-full
+      sm:!px-4 sm:!py-2 sm:!text-sm
+    "
+              >
+                Get In Touch
+              </span>
             </button>
 
             {/* Desktop Sidebar Button */}

@@ -174,7 +174,7 @@ export default function Website() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <Nav />
 
       {/* ✅ GLOBAL BACKGROUND (same theme everywhere) */}

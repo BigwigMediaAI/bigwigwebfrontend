@@ -148,7 +148,7 @@ export default function AffiliateMarketing() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <Nav />
 
       {/* ✅ GLOBAL BACKGROUND (Same as reference) */}

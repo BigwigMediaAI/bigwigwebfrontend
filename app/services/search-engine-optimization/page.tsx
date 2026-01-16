@@ -159,7 +159,7 @@ export default function Seo() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <Nav />
 
       <title>SEO Services for Higher Ranking</title>

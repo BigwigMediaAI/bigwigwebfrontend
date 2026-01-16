@@ -190,7 +190,7 @@ export default function OnlineReputationManagement() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <title>Online Reputation Management</title>
       <link
         rel="canonical"

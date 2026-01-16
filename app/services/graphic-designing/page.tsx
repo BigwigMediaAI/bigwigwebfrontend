@@ -152,7 +152,7 @@ export default function GraphicDesigning() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <title>Professional Graphic Designing</title>
       <link
         rel="canonical"

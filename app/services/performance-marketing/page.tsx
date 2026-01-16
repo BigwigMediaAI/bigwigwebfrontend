@@ -201,7 +201,7 @@ export default function PerformanceMarketing() {
   };
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen overflow-x-hidden">
       <title>ROI-Driven Performance Marketing</title>
       <meta
         name="description"

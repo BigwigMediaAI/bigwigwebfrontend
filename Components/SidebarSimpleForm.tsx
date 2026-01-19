@@ -1,8 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
-import axios from "axios";
-import type { AxiosError } from "axios";
+import { useState } from "react";
+import axios, { AxiosError } from "axios";
+import ButtonFill from "./ButtonFill";
+
+const SERVICES = [
+  "SEO",
+  "SMM",
+  "Performance Marketing",
+  "Content Marketing",
+  "Website Development",
+  "SMO",
+  "Email Marketing",
+  "Graphic Designing",
+  "Influencer Marketing",
+  "Affiliate Marketing",
+  "ORM",
+];
 
 export default function SidebarSimpleForm() {
   const [step, setStep] = useState<"form" | "otp">("form");
@@ -10,25 +24,17 @@ export default function SidebarSimpleForm() {
   const [statusMessage, setStatusMessage] = useState("");
 
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     phone: "",
-    purpose: "",
+    countryCode: "+91",
+    service: "",
     message: "",
   });
 
   const [otp, setOtp] = useState("");
-  const [otpSentAt, setOtpSentAt] = useState<number | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // ===== SEND OTP =====
+  /* ---------------- SEND OTP ---------------- */
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -37,22 +43,26 @@ export default function SidebarSimpleForm() {
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/send-otp`,
-        formData
+        {
+          name: formData.fullName,
+          email: formData.email,
+          phone: `${formData.countryCode}${formData.phone}`,
+          services: formData.service ? [formData.service] : [],
+          message: formData.message,
+        }
       );
-      setStatusMessage("OTP sent to your email.");
-      setOtpSentAt(Date.now());
+
       setStep("otp");
-    } catch (err: unknown) {
-      const axiosError = err as AxiosError<{ message?: string }>;
-      setStatusMessage(
-        axiosError.response?.data?.message || "Failed to send OTP."
-      );
+      setStatusMessage("OTP sent to your email.");
+    } catch (err) {
+      const error = err as AxiosError<{ message?: string }>;
+      setStatusMessage(error.response?.data?.message || "Failed to send OTP.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ===== VERIFY OTP =====
+  /* ---------------- VERIFY OTP ---------------- */
   const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -66,147 +76,141 @@ export default function SidebarSimpleForm() {
           otp,
         }
       );
-      setStatusMessage("Thank you! Our team will contact you soon.");
+
+      setStatusMessage("Thank you! We’ll contact you shortly.");
 
       setTimeout(() => {
         setStep("form");
         setFormData({
-          name: "",
+          fullName: "",
           email: "",
           phone: "",
-          purpose: "",
+          countryCode: "+91",
+          service: "",
           message: "",
         });
         setOtp("");
-      }, 1500);
-    } catch (err: unknown) {
-      const axiosError = err as AxiosError<{ message?: string }>;
-      setStatusMessage(axiosError.response?.data?.message || "Invalid OTP.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const canResend = otpSentAt ? Date.now() - otpSentAt > 30000 : true;
-
-  const resendOtp = async () => {
-    if (!canResend) return;
-
-    setLoading(true);
-    setStatusMessage("");
-
-    try {
-      await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE}/api/lead/send-otp`,
-        formData
-      );
-      setStatusMessage("OTP resent.");
-      setOtpSentAt(Date.now());
-    } catch {
-      setStatusMessage("Unable to resend OTP. Try again later.");
+        setStatusMessage("");
+      }, 2000);
+    } catch (err) {
+      const error = err as AxiosError<{ message?: string }>;
+      setStatusMessage(error.response?.data?.message || "Invalid OTP.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-4">
-      <p className="text-sm text-gray-500 mb-4">
+    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6">
+      <h3 className="text-lg font-semibold mb-2">Get a Free Consultation</h3>
+
+      <p className="text-sm text-gray-400 mb-5">
         Fill the form & verify via OTP
       </p>
 
       {step === "form" ? (
-        <form onSubmit={handleSendOtp} className="space-y-3">
+        <form onSubmit={handleSendOtp} className="space-y-4">
           <input
-            name="name"
+            type="text"
             placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full border rounded-md px-3 py-2 text-sm"
+            value={formData.fullName}
+            onChange={(e) =>
+              setFormData({ ...formData, fullName: e.target.value })
+            }
             required
+            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--secondary-color)]"
           />
 
           <input
             type="email"
-            name="email"
             placeholder="Email Address"
             value={formData.email}
-            onChange={handleChange}
-            className="w-full border rounded-md px-3 py-2 text-sm"
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
             required
+            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--secondary-color)]"
           />
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Mobile Number"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full border rounded-md px-3 py-2 text-sm"
-            required
-          />
+          <div className="flex gap-2">
+            <select
+              value={formData.countryCode}
+              onChange={(e) =>
+                setFormData({ ...formData, countryCode: e.target.value })
+              }
+              className="bg-black/30 border border-white/10 rounded-xl px-3 py-3 text-sm outline-none"
+            >
+              <option value="+91">+91</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+            </select>
+
+            <input
+              type="tel"
+              placeholder="Phone"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData({ ...formData, phone: e.target.value })
+              }
+              required
+              className="flex-1 bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--secondary-color)]"
+            />
+          </div>
 
           <select
-            name="purpose"
-            value={formData.purpose}
-            onChange={handleChange}
-            className="w-full border rounded-md px-3 py-2 text-sm"
-            required
+            value={formData.service}
+            onChange={(e) =>
+              setFormData({ ...formData, service: e.target.value })
+            }
+            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none"
           >
-            <option value="">Select Purpose</option>
-            <option value="buy">Buy Property</option>
-            <option value="sell">Sell Property</option>
+            <option value="">Select Service</option>
+            {SERVICES.map((s) => (
+              <option key={s} value={s}>
+                {s}
+              </option>
+            ))}
           </select>
 
           <textarea
-            name="message"
-            placeholder="Your requirement"
             rows={3}
+            placeholder="Your requirement"
             value={formData.message}
-            onChange={handleChange}
-            className="w-full border rounded-md px-3 py-2 text-sm"
-            required
+            onChange={(e) =>
+              setFormData({ ...formData, message: e.target.value })
+            }
+            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--secondary-color)]"
           />
 
-          <button
+          <ButtonFill
             type="submit"
-            disabled={loading}
-            className="w-full bg-[var(--primary-color)] text-white py-2 rounded-md font-semibold text-sm"
-          >
-            {loading ? "Sending OTP..." : "Send OTP"}
-          </button>
+            className="w-full"
+            text={loading ? "Sending OTP..." : "Send OTP"}
+          />
         </form>
       ) : (
-        <form onSubmit={handleVerifyOtp} className="space-y-3">
+        <form onSubmit={handleVerifyOtp} className="space-y-4">
           <input
+            type="text"
+            placeholder="Enter OTP"
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
-            placeholder="Enter OTP"
-            className="w-full border rounded-md px-3 py-2 text-sm"
             required
+            className="w-full bg-black/30 border border-white/10 rounded-xl px-4 py-3 text-sm outline-none focus:border-[var(--secondary-color)]"
           />
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white py-2 rounded-md font-semibold text-sm"
+            className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold text-sm"
           >
             {loading ? "Verifying..." : "Verify OTP"}
-          </button>
-
-          <button
-            type="button"
-            onClick={resendOtp}
-            disabled={!canResend || loading}
-            className="text-xs underline text-gray-600"
-          >
-            {canResend ? "Resend OTP" : "Resend in 30s"}
           </button>
         </form>
       )}
 
       {statusMessage && (
-        <p className="mt-3 text-center text-sm text-gray-600">
+        <p className="mt-4 text-sm text-center text-gray-300">
           {statusMessage}
         </p>
       )}

@@ -7,7 +7,7 @@ export default function BlogSidebar({ relatedBlogs }: { relatedBlogs: any[] }) {
   return (
     <aside className="space-y-10 sticky top-28">
       {/* ===== CONTACT FORM ===== */}
-      <div className="bg-white border rounded-xl shadow-md p-5">
+      <div className="bg-black border rounded-xl shadow-md p-5">
         <h3 className="text-xl font-bold mb-2">Need Help?</h3>
         <p className="text-sm text-gray-600 mb-4">
           Share your details & get expert assistance
@@ -18,14 +18,14 @@ export default function BlogSidebar({ relatedBlogs }: { relatedBlogs: any[] }) {
 
       {/* ===== RELATED BLOGS ===== */}
       {relatedBlogs?.length > 0 && (
-        <div className="bg-white border rounded-xl shadow-md p-5">
+        <div className="bg-black border rounded-xl shadow-md p-5">
           <h3 className="text-xl font-bold mb-4">Related Blogs</h3>
 
           <div className="space-y-4">
             {relatedBlogs.slice(0, 4).map((blog) => (
               <a
                 key={blog.slug}
-                href={`/blogs/${blog.slug}`}
+                href={`/blog/${blog.slug}`}
                 className="flex gap-4 items-center group"
               >
                 <div className="relative w-20 h-16 rounded-md overflow-hidden shrink-0">

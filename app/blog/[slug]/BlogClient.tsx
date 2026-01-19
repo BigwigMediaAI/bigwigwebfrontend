@@ -46,7 +46,7 @@ export default function BlogClient({
 
         <div className="relative w-11/12 md:w-5/6 max-w-7xl mx-auto">
           {/* BLOG HEADER (GLASS) */}
-          <section className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-10 mb-8">
+          <section className=" rounded-3xl mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
               {blog.title}
             </h1>
@@ -74,37 +74,19 @@ export default function BlogClient({
           )}
 
           {/* BLOG CONTENT + SIDEBAR */}
-          <section className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <section className="mt-12 grid grid-cols-1 lg:grid-cols-5 gap-10">
             {/* LEFT – BLOG CONTENT */}
-            <article className="lg:col-span-8">
+            <article className="lg:col-span-3">
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-10 shadow-xl">
-                {/* IMPORTANT: Dark-mode prose */}
                 <div
-                  className="
-                    blog-content
-                    prose prose-lg max-w-none
-                    prose-headings:text-white
-                    prose-p:text-gray-300
-                    prose-strong:text-white
-                    prose-a:text-[var(--secondary-color)]
-                    prose-a:no-underline hover:prose-a:underline
-                    prose-ul:text-gray-300
-                    prose-ol:text-gray-300
-                    prose-li:text-gray-300
-                    prose-blockquote:text-gray-200
-                    prose-blockquote:border-white/20
-                    prose-code:text-white
-                    prose-pre:bg-black/40
-                    prose-pre:border prose-pre:border-white/10
-                    prose-pre:rounded-2xl
-                  "
+                  className="blog-content"
                   dangerouslySetInnerHTML={{ __html: blog.content }}
                 />
               </div>
             </article>
 
             {/* RIGHT – SIDEBAR */}
-            <aside className="lg:col-span-4">
+            <aside className="lg:col-span-2">
               <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 md:p-8 shadow-xl lg:sticky lg:top-32">
                 <BlogSidebar relatedBlogs={relatedBlogs} />
               </div>

@@ -94,7 +94,8 @@
 }
 
 .cta-wrap:hover .cta-inner {
-  box-shadow: 0 0 18px rgba(80, 160, 255, 0.45),
+  box-shadow:
+    0 0 18px rgba(80, 160, 255, 0.45),
     0 0 36px rgba(80, 160, 255, 0.35);
 }
 
@@ -263,7 +264,8 @@
   border-radius: 50%;
   border: none;
   background: radial-gradient(circle, #ff9f1c, #ff6a00);
-  box-shadow: 0 0 20px rgba(255, 106, 0, 0.55),
+  box-shadow:
+    0 0 20px rgba(255, 106, 0, 0.55),
     inset 0 0 12px rgba(255, 255, 255, 0.3);
   cursor: pointer;
   position: relative;
@@ -295,7 +297,9 @@
   opacity: 0;
   transform: scale(0.2);
   pointer-events: none;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
 }
 
 /* ===== POSITIONS (CARDINAL) ===== */
@@ -344,7 +348,8 @@
   position: relative;
   padding: 12px 32px;
   border-radius: 9999px;
-  background: linear-gradient(#000, #000) padding-box,
+  background:
+    linear-gradient(#000, #000) padding-box,
     linear-gradient(90deg, transparent, rgba(80, 160, 255, 0.9), transparent)
       border-box;
   border: 1.5px solid transparent;
@@ -355,7 +360,8 @@
 
 .cta-border-btn:hover {
   animation-play-state: paused;
-  box-shadow: 0 0 18px rgba(80, 160, 255, 0.45),
+  box-shadow:
+    0 0 18px rgba(80, 160, 255, 0.45),
     0 0 36px rgba(80, 160, 255, 0.35);
 }
 
@@ -407,4 +413,154 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ===============================
+   BLOG CONTENT STYLES (DARK MODE)
+   =============================== */
+
+.blog-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #d1d5db; /* gray-300 */
+}
+
+/* Headings */
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 2rem 0 1.25rem;
+  color: #ffffff;
+}
+
+.blog-content h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 1.75rem 0 1rem;
+  color: #ffffff;
+}
+
+.blog-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem;
+  color: #ffffff;
+}
+
+.blog-content h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.5rem;
+  color: #ffffff;
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin: 0.75rem 0;
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0;
+  padding-left: 1.75rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* FORCE list markers to appear */
+.blog-content ul {
+  list-style-type: disc; /* ● bullets */
+  list-style-position: outside;
+}
+
+.blog-content ol {
+  list-style-type: decimal; /* 1, 2, 3 */
+  list-style-position: outside;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.blog-content th {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.blog-content td {
+  color: #d1d5db;
+}
+
+/* Images */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Links */
+.blog-content a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.blog-content a:hover {
+  text-decoration: underline;
+}
+
+/* Blockquote */
+.blog-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--secondary-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #e5e7eb;
+  border-radius: 12px;
+}
+
+/* Inline code */
+.blog-content code {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+/* Code blocks */
+.blog-content pre {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 16px;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-content pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #ffffff;
 }

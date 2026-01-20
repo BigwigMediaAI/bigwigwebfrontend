@@ -418,6 +418,26 @@
 /* ===============================
    BLOG CONTENT STYLES (DARK MODE)
    =============================== */
+/* Fix Jodit image edit modal visibility */
+.jodit-dialog,
+.jodit-dialog * {
+  color: #111827 !important; /* dark text */
+}
+
+.jodit-dialog {
+  background-color: #ffffff !important;
+}
+
+.jodit-input,
+.jodit-textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.jodit-form__group label {
+  color: #374151 !important;
+}
 
 .blog-content {
   font-size: 16px;

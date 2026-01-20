@@ -86,7 +86,7 @@ const AddBlog = ({
   }, [existingBlog]);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     if (name === "title" && !existingBlog) {
@@ -153,7 +153,7 @@ const AddBlog = ({
         {
           method: existingBlog ? "PUT" : "POST",
           body: blogData, // ❌ DO NOT SET HEADERS
-        }
+        },
       );
 
       // ✅ SAFE response handling
@@ -174,7 +174,9 @@ const AddBlog = ({
       }
 
       alert(
-        existingBlog ? "Blog updated successfully!" : "Blog added successfully!"
+        existingBlog
+          ? "Blog updated successfully!"
+          : "Blog added successfully!",
       );
       onSuccess();
       onClose();
@@ -250,7 +252,7 @@ const AddBlog = ({
             <JoditEditor
               ref={editor}
               value={formData.content}
-              onChange={(newContent) =>
+              onBlur={(newContent) =>
                 setFormData((prev) => ({ ...prev, content: newContent }))
               }
               config={{

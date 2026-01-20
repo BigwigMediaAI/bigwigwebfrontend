@@ -3,8 +3,12 @@
 import Image from "next/image";
 import { Play, BarChart2, TrendingUp } from "lucide-react";
 import ButtonFill from "./ButtonFill";
+import { useState } from "react";
+import PopupForm from "./Popup";
 
 export default function WhyChooseUs() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <section className=" relative bg-black overflow-hidden py-16 md:py-28 ">
       {/* BACKGROUND STARS */}
@@ -42,9 +46,9 @@ export default function WhyChooseUs() {
           </p>
 
           <div className="mt-10">
-            <button className="cta-wrap">
+            <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
               <span className="cta-border"></span>
-              <span className="cta-inner">Contact Us</span>
+              <span className="cta-inner">Get Started Today</span>
             </button>
           </div>
         </div>
@@ -97,6 +101,7 @@ export default function WhyChooseUs() {
           </div>
         </div>
       </div>
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </section>
   );
 }

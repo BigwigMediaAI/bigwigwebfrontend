@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../Assets/bigwig-logo.png"; // replace if needed
+import { Instagram, MessageCircle, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -64,57 +65,123 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <Image src={logo} alt="Logo" className="w-28 mb-4" />
-            <p className="text-sm mb-2">859 dream avenue, New York</p>
-            <p className="text-sm">+1 (800) 123-4567</p>
+            <p className="text-sm mb-2">Rajouri Garden, Delhi 110007, India</p>
+            <p className="text-sm">+91 8368573451</p>
           </div>
-
           {/* SECTIONS */}
           <div>
-            <h4 className="text-white mb-4 text-lg">Sections</h4>
+            <h4 className="text-white mb-4 text-lg">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#">Features</Link>
+                <Link href="/services">Services</Link>
               </li>
               <li>
-                <Link href="#">Services</Link>
+                <Link href="/clients">Clients</Link>
               </li>
               <li>
-                <Link href="#">Process</Link>
+                <Link href="/about">About</Link>
               </li>
               <li>
-                <Link href="#">Pricing</Link>
-              </li>
-              <li>
-                <Link href="#">Contact</Link>
+                <Link href="/blog">Blogs</Link>
               </li>
             </ul>
           </div>
-
           {/* UTILITY */}
           <div>
             <h4 className="text-white mb-4 text-lg">Utility</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#">404</Link>
+                <Link href="/terms-conditions">Terms & Conditions</Link>
               </li>
               <li>
-                <Link href="#">Privacy Policy</Link>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
             </ul>
           </div>
-
           {/* SOCIAL */}
           <div>
-            <h4 className="text-white mb-4 text-lg">Social</h4>
+            <h4 className="text-white mb-4 text-lg font-semibold">Social</h4>
+
             <ul className="space-y-3 text-sm">
+              {/* WhatsApp */}
               <li>
-                <Link href="#">WhatsApp</Link>
+                <Link
+                  href="https://wa.me/918368573451"
+                  target="_blank"
+                  className="
+          flex items-center gap-3
+          text-gray-300 hover:text-white
+          transition group
+        "
+                >
+                  <span
+                    className="
+            w-9 h-9 rounded-xl
+            bg-white/5 border border-white/10
+            flex items-center justify-center
+            group-hover:bg-green-500/10
+            group-hover:border-green-500/30
+            transition
+          "
+                  >
+                    <MessageCircle className="w-5 h-5 text-green-400" />
+                  </span>
+                  WhatsApp
+                </Link>
               </li>
+
+              {/* Instagram */}
               <li>
-                <Link href="#">Instagram</Link>
+                <Link
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  className="
+          flex items-center gap-3
+          text-gray-300 hover:text-white
+          transition group
+        "
+                >
+                  <span
+                    className="
+            w-9 h-9 rounded-xl
+            bg-white/5 border border-white/10
+            flex items-center justify-center
+            group-hover:bg-pink-500/10
+            group-hover:border-pink-500/30
+            transition
+          "
+                  >
+                    <Instagram className="w-5 h-5 text-pink-400" />
+                  </span>
+                  Instagram
+                </Link>
               </li>
+
+              {/* Twitter / X */}
               <li>
-                <Link href="#">Twitter</Link>
+                <Link
+                  href="https://twitter.com/"
+                  target="_blank"
+                  className="
+          flex items-center gap-3
+          text-gray-300 hover:text-white
+          transition group
+        "
+                >
+                  <span
+                    className="
+            w-9 h-9 rounded-xl
+            bg-white/5 border border-white/10
+            flex items-center justify-center
+            group-hover:bg-sky-500/10
+            group-hover:border-sky-500/30
+            transition
+          "
+                  >
+                    <Twitter className="w-5 h-5 text-sky-400" />
+                  </span>
+                  Twitter
+                </Link>
               </li>
             </ul>
           </div>
@@ -122,8 +189,7 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between text-sm text-gray-500">
-          <span>© 2025 All rights Reserved by GrabUi</span>
-          <span>Powered by Framer</span>
+          <span>© 2025 All rights Reserved by Bigwig Media</span>
         </div>
       </div>
     </footer>

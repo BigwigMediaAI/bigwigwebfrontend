@@ -3,6 +3,8 @@
 import Image from "next/image";
 import about from "../Assets/about.webp";
 import { Users, TrendingUp, BarChart3, Star } from "lucide-react";
+import { useState } from "react";
+import PopupForm from "./Popup";
 
 const stats = [
   {
@@ -28,6 +30,7 @@ const stats = [
 ];
 
 export default function About() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   return (
     <>
       <section className="relative bg-black overflow-hidden py-20">
@@ -56,9 +59,9 @@ export default function About() {
             </p>
 
             <div className="mt-10">
-              <button className="cta-wrap">
+              <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
                 <span className="cta-border"></span>
-                <span className="cta-inner">Contact Us</span>
+                <span className="cta-inner">Get Started Today</span>
               </button>
             </div>
           </div>
@@ -96,6 +99,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </>
   );
 }

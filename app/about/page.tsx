@@ -15,13 +15,17 @@ import {
   PenTool,
   BarChart3,
 } from "lucide-react";
+import { useState } from "react";
+import PopupForm from "@/Components/Popup";
 
 export default function AboutPage() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Nav />
 
-      <div className="relative pt-28 md:pt-36 pb-24">
+      <div className="relative pt-28 md:pt-36">
         {/* GRID BACKGROUND */}
         <div
           className="absolute inset-0 opacity-30 pointer-events-none"
@@ -38,7 +42,7 @@ export default function AboutPage() {
           <div className="absolute top-40 -right-40 w-[420px] h-[420px] bg-white/10 blur-3xl rounded-full" />
         </div>
 
-        <div className="relative w-11/12 md:w-5/6 max-w-7xl mx-auto">
+        <div className="relative w-11/12 md:w-5/6 mx-auto">
           {/* =========================
               HERO
           ========================== */}
@@ -63,15 +67,10 @@ export default function AboutPage() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full
-                bg-white/10 border border-white/10 backdrop-blur-md
-                hover:bg-white/15 transition"
-              >
-                Let’s Work Together
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-              </Link>
+              <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
+                <span className="cta-border"></span>
+                <span className="cta-inner">Get Started Today</span>
+              </button>
 
               <Link
                 href="/services"
@@ -87,7 +86,7 @@ export default function AboutPage() {
           {/* =========================
               WHO WE ARE + STATS (GLASS SPLIT)
           ========================== */}
-          <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch mb-16">
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch py-16">
             {/* Left */}
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-7 md:p-10 shadow-xl">
               <h2 className="text-2xl md:text-3xl font-semibold">Who We Are</h2>
@@ -157,7 +156,7 @@ export default function AboutPage() {
           {/* =========================
               SERVICES SNAPSHOT (UNIQUE ICON GRID)
           ========================== */}
-          <section className="mb-16">
+          <section className="py-16">
             <div className="text-center mb-10">
               <span className="inline-block mb-4 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm">
                 What We Do
@@ -220,7 +219,7 @@ export default function AboutPage() {
           {/* =========================
               CORE VALUES
           ========================== */}
-          <section className="mb-16">
+          <section className="py-16">
             <div className="text-center mb-10">
               <span className="inline-block mb-4 px-4 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300 text-sm">
                 Core Values
@@ -284,15 +283,13 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full
-                    bg-[var(--secondary-color)] text-black font-semibold
-                    hover:opacity-90 transition"
+                  <button
+                    onClick={() => setIsPopupOpen(true)}
+                    className="cta-wrap"
                   >
-                    Get in Touch
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
+                    <span className="cta-border"></span>
+                    <span className="cta-inner">Get Started Today</span>
+                  </button>
 
                   <Link
                     href="/services"
@@ -310,6 +307,7 @@ export default function AboutPage() {
       </div>
 
       <Footer />
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </div>
   );
 }

@@ -6,6 +6,8 @@ import Footer from "../../../Components/Footer";
 import Image from "next/image";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import BlogSidebar from "../../../Components/BlogSidebar";
+import PopupForm from "@/Components/Popup";
+import Link from "next/link";
 
 export default function BlogClient({
   blog,
@@ -95,7 +97,50 @@ export default function BlogClient({
         </div>
       </div>
 
+      {/* =========================
+              CTA FINAL
+          ========================== */}
+      <section className="w-11/12 md:w-5/6 mx-auto mb-5">
+        <div className="relative overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-12 shadow-xl">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[var(--secondary-color)]/15 blur-3xl rounded-full" />
+          </div>
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-light">
+                Let’s build your next{" "}
+                <span className="text-[var(--secondary-color)] italic font-serif">
+                  Growth Story
+                </span>
+              </h2>
+              <p className="mt-4 text-gray-300 max-w-xl">
+                Whether you need SEO, SMM, Ads, Web Development, Branding or
+                complete digital growth — we’ve got you covered.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 lg:justify-end">
+              <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
+                <span className="cta-border"></span>
+                <span className="cta-inner">Get Started Today</span>
+              </button>
+
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full
+                    bg-black/40 border border-white/15 text-white
+                    hover:border-white/30 transition"
+              >
+                View Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
 
       {/* MOBILE CTA BAR */}
       <div className="fixed bottom-0 left-0 w-full flex md:hidden z-[9999]">

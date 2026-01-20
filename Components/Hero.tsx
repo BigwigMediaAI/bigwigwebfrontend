@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import seoIcon from "../Assets/rocket.svg"; // ← use your actual logo/icon
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -84,10 +85,12 @@ export default function Hero() {
 
         {/* CTA */}
         <div className="mt-10">
-          <button className="cta-wrap">
-            <span className="cta-border"></span>
-            <span className="cta-inner">Contact Us</span>
-          </button>
+          <Link href="/contact">
+            <button className="cta-wrap">
+              <span className="cta-border"></span>
+              <span className="cta-inner">Contact Us</span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>

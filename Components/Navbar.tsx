@@ -38,6 +38,7 @@ import {
   faLocationDot,
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
+import PopupForm from "./Popup";
 
 type Service = {
   title: string;
@@ -160,70 +161,71 @@ const Nav: React.FC = () => {
   const splitIntoColumns = (items: Service[], columns = 3) => {
     const per = Math.ceil(items.length / columns);
     return Array.from({ length: columns }, (_, i) =>
-      items.slice(i * per, i * per + per)
+      items.slice(i * per, i * per + per),
     );
   };
   const cols = splitIntoColumns(services, 3);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-black/40 backdrop-blur-md border-b border-white/10"
-          : "bg-transparent"
-      }`}
-    >
-      {/* Main Nav */}
-      <div className=" px-4 md:px-8 lg:px-16 py-6">
-        <div className="grid grid-cols-2 lg:grid-cols-5 items-center  ">
-          {/* Logo */}
-          <div className="flex items-center col-span-1">
-            <Link href="/">
-              <Image
-                src={logo}
-                alt="Bigwig Digital"
-                className="w-24 md:w-24"
-                draggable={false}
-              />
-            </Link>
-          </div>
+    <header className="fixed top-0 left-0 w-full z-50">
+      <div
+        className={`transition-all duration-300 ${
+          scrolled
+            ? "bg-black/40 backdrop-blur-md border-b border-white/10"
+            : "bg-transparent"
+        }`}
+      >
+        {/* Main Nav */}
+        <div className=" px-4 md:px-8 lg:px-16 py-6">
+          <div className="grid grid-cols-2 lg:grid-cols-5 items-center  ">
+            {/* Logo */}
+            <div className="flex items-center col-span-1">
+              <Link href="/">
+                <Image
+                  src={logo}
+                  alt="Bigwig Digital"
+                  className="w-24 md:w-24"
+                  draggable={false}
+                />
+              </Link>
+            </div>
 
-          {/* Desktop Menu */}
-          <nav className="hidden lg:flex justify-center col-span-3">
-            <ul className="nav-rect flex items-center gap-8 px-10 text-white relative">
-              <li
-                className="relative flex items-center gap-1"
-                onMouseEnter={() => setServicesOpen(true)}
-                onMouseLeave={() => setServicesOpen(false)}
-              >
-                <Link
-                  href="/services"
-                  className="px-2 py-3 flex items-center gap-1 hover:text-[var(--secondary-color)] font-medium"
+            {/* Desktop Menu */}
+            <nav className="hidden lg:flex justify-center col-span-3">
+              <ul className="nav-rect flex items-center gap-8 px-10 text-white relative">
+                <li
+                  className="relative flex items-center gap-1"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  Services
-                  <svg
-                    className={`w-4 h-4 transition-transform duration-300 ${
-                      servicesOpen ? "rotate-180" : "rotate-0"
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <Link
+                    href="/services"
+                    className="px-2 py-3 flex items-center gap-1 hover:text-[var(--secondary-color)] font-medium"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    ></path>
-                  </svg>
-                </Link>
+                    Services
+                    <svg
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        servicesOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      ></path>
+                    </svg>
+                  </Link>
 
-                {/* Mega dropdown */}
-                <div
-                  role="menu"
-                  aria-hidden={!servicesOpen}
-                  className={`absolute top-12 w-[900px]
+                  {/* Mega dropdown */}
+                  <div
+                    role="menu"
+                    aria-hidden={!servicesOpen}
+                    className={`absolute top-12 w-[900px]
   -translate-x-12
   text-white transition-all duration-300
   bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl
@@ -236,38 +238,38 @@ const Nav: React.FC = () => {
       : "opacity-0 translate-y-4 pointer-events-none"
   }
 `}
-                >
-                  <div className="grid grid-cols-3 gap-6 p-4">
-                    {cols.map((col, i) => (
-                      <div key={i} className="space-y-3">
-                        {col.map((svc) => {
-                          const Icon = svc.icon;
-                          return (
-                            <Link
-                              key={svc.title}
-                              href={svc.slug}
-                              className="flex items-start gap-3 p-2 rounded"
-                            >
-                              <Icon className="w-5 h-5 mt-1 text-[var(--secondary-color)]" />
-                              <div className=" text-sm">{svc.title}</div>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    ))}
+                  >
+                    <div className="grid grid-cols-3 gap-6 p-4">
+                      {cols.map((col, i) => (
+                        <div key={i} className="space-y-3">
+                          {col.map((svc) => {
+                            const Icon = svc.icon;
+                            return (
+                              <Link
+                                key={svc.title}
+                                href={svc.slug}
+                                className="flex items-start gap-3 p-2 rounded"
+                              >
+                                <Icon className="w-5 h-5 mt-1 text-[var(--secondary-color)]" />
+                                <div className=" text-sm">{svc.title}</div>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li>
-                <Link
-                  href="/clients"
-                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
-                >
-                  Clients
-                </Link>
-              </li>
+                </li>
+                <li>
+                  <Link
+                    href="/clients"
+                    className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                  >
+                    Clients
+                  </Link>
+                </li>
 
-              {/* <li>
+                {/* <li>
                 <Link
                   href="/our-works"
                   className="text-sm text-gray-200 hover:text-white transition"
@@ -275,91 +277,92 @@ const Nav: React.FC = () => {
                   Our Works
                 </Link>
               </li> */}
-              <li>
-                <Link
-                  href="/about"
-                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
-                >
-                  Blog
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                  >
+                    About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                  >
+                    Blog
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  href="/contact"
-                  className="px-2 py-2 hover:text-[var(--secondary-color)]"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </nav>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="px-2 py-2 hover:text-[var(--secondary-color)]"
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+              </ul>
+            </nav>
 
-          {/* Right: get in touch + mobile menu */}
-          <div className="flex items-center justify-end gap-3 col-span-1">
-            <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
-              <span className="cta-border"></span>
+            {/* Right: get in touch + mobile menu */}
+            <div className="flex items-center justify-end gap-3 col-span-1">
+              <button onClick={() => setIsPopupOpen(true)} className="cta-wrap">
+                <span className="cta-border"></span>
 
-              <span
-                className="
+                <span
+                  className="
       cta-inner
       !px-3 !py-1.5 !text-[11px] !rounded-full
       sm:!px-4 sm:!py-2 sm:!text-sm
     "
-              >
-                Get In Touch
-              </span>
-            </button>
+                >
+                  Get In Touch
+                </span>
+              </button>
 
-            {/* Desktop Sidebar Button */}
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="hidden md:inline-flex p-2 text-white hover:bg-[var(--secondary-color)] rounded cursor-pointer"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              {/* Desktop Sidebar Button */}
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="hidden md:inline-flex p-2 text-white hover:bg-[var(--secondary-color)] rounded cursor-pointer"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
 
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="md:hidden p-2 rounded text-white hover:bg-[var(--secondary-color)]"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-7 h-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              {/* Mobile Hamburger */}
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="md:hidden p-2 rounded text-white hover:bg-[var(--secondary-color)]"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-7 h-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -375,7 +378,7 @@ const Nav: React.FC = () => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <aside className="relative ml-auto w-80 bg-black/90 backdrop-blur-xl text-white h-full p-6 shadow-xl flex flex-col">
+        <aside className="relative ml-auto w-80 bg-[#050505] text-white h-full p-6 shadow-xl flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <Link href="/">
               <Image src={logo} alt="logo" className="w-28" />
@@ -473,7 +476,7 @@ const Nav: React.FC = () => {
           onClick={() => setSidebarOpen(false)}
         />
 
-        <aside className="relative ml-auto max-w-xl bg-black text-white h-full p-6 shadow-xl flex flex-col transition-transform duration-500">
+        <aside className="relative ml-auto max-w-xl bg-[#050505] text-white h-full p-6 shadow-xl flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <Link href="/">
               <Image src={logo} alt="logo" className="w-40" />
@@ -560,7 +563,8 @@ const Nav: React.FC = () => {
           </div>
         </aside>
       </div>
-      {/* <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} /> */}
+
+      <PopupForm isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
     </header>
   );
 };

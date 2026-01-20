@@ -102,9 +102,12 @@ export default function BlogSection() {
 
         {/* CTA */}
         <div className="mt-16">
-          <button className="px-8 py-3 rounded-full bg-black border border-white/20 text-white hover:border-white/40 transition shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-            Explore More Blogs
-          </button>
+          <Link href="/blog">
+            <button className="cta-wrap">
+              <span className="cta-border"></span>
+              <span className="cta-inner">Explore More Blogs</span>
+            </button>
+          </Link>
         </div>
       </div>
     </section>

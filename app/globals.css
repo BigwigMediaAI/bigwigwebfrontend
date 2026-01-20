@@ -4,6 +4,35 @@
   --primary-color: #0d538b;
   --secondary-color: #ee3d49;
 }
+
+/* Curtain open */
+@keyframes curtainDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Curtain close */
+@keyframes curtainUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.popup-open {
+  animation: curtainDown 0.6s ease forwards;
+}
+
+.popup-close {
+  animation: curtainUp 0.6s ease forwards;
+}
+
 @keyframes twinkle {
   0% {
     opacity: 0.2;

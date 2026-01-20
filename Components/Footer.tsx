@@ -41,7 +41,7 @@ export default function Footer() {
             <h2 className="text-white text-4xl md:text-5xl font-light leading-tight">
               Stay Connected &
             </h2>
-            <h3 className="mt-2 text-[#ff9f4a] italic font-serif text-4xl md:text-5xl">
+            <h3 className="mt-2 text-[var(--secondary-color)] italic font-serif text-4xl md:text-5xl">
               Subscribe Our Newsletter!
             </h3>
           </div>

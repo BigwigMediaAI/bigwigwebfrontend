@@ -44,7 +44,7 @@ export default function AdminBlogsPage() {
     setLoading(true);
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE}/blog/viewblog`
+        `${process.env.NEXT_PUBLIC_API_BASE}/blog/viewblog`,
       );
       const data = await res.json();
       setBlogs(data);
@@ -68,7 +68,7 @@ export default function AdminBlogsPage() {
         `${process.env.NEXT_PUBLIC_API_BASE}/blog/${slug}`,
         {
           method: "DELETE",
-        }
+        },
       );
       const json = await res.json();
       if (res.ok) {
@@ -94,7 +94,7 @@ export default function AdminBlogsPage() {
         {
           method: "PATCH",
           body: formData,
-        }
+        },
       );
 
       if (!res.ok) throw new Error("Failed to update image");
@@ -136,7 +136,7 @@ export default function AdminBlogsPage() {
   const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
   const paginatedBlogs = filteredBlogs.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   return (
@@ -144,7 +144,7 @@ export default function AdminBlogsPage() {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Manage Blogs</h1>
         <button
-          className="bg-transparent hover:text-[var(--primary-color)]"
+          className="border px-4 py-2 rounded-2xl cursor-pointer hover:text-[var(--primary-color)]"
           onClick={() => {
             setEditingBlog(null);
             setShowAddModal(true);
@@ -195,7 +195,7 @@ export default function AdminBlogsPage() {
                   className="even:bg-[#111] hover:bg-[#222] transition"
                 >
                   <td className="px-3 py-2">{blog.title}</td>
-                  <td className="px-3 py-2 max-w-[200px] truncate">
+                  <td className="px-3 py-2 max-w-[200px] line-clamp-3">
                     <div
                       className="line-clamp-3 text-gray-300"
                       dangerouslySetInnerHTML={{ __html: blog.content }}
@@ -267,7 +267,7 @@ export default function AdminBlogsPage() {
                   >
                     {num}
                   </button>
-                )
+                ),
               )}
               <button
                 onClick={() =>
@@ -318,7 +318,7 @@ export default function AdminBlogsPage() {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ content: htmlContent }),
-                      }
+                      },
                     );
                     if (!res.ok) throw new Error("Failed to update blog");
                     alert("Blog updated successfully");

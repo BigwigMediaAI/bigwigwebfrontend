@@ -302,7 +302,7 @@ const PopupForm: React.FC<PopupFormProps> = ({ isOpen, onClose }) => {
             {/* SERVICES */}
             <div>
               <p className="font-semibold mb-2">Select Services You Need:</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                 {SERVICES_LIST.map((service) => (
                   <label
                     key={service}

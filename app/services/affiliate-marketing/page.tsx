@@ -9,6 +9,7 @@ import affiliateImg from "../../../Assets/services/12.jpg";
 
 import Image from "next/image";
 import ButtonFill from "../../../Components/ButtonFill";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 // ✅ SECTION 1 (Like "Top Services" cards)
 const affiliateServices = [
@@ -437,7 +438,24 @@ export default function AffiliateMarketing() {
             </div>
           </div>
         </section>
+        {/* MOBILE CTA BAR */}
+        <div className="fixed bottom-0 left-0 w-full flex md:hidden z-40">
+          <a
+            href="tel:+918368573451"
+            className="w-1/2 bg-[var(--primary-color)] backdrop-blur-md border-t border-white/10 text-white py-3 flex justify-center gap-2"
+          >
+            <FaPhoneAlt /> Call Us
+          </a>
 
+          <a
+            href="https://wa.me/+918368573451"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-1/2 bg-[var(--secondary-color)] text-black py-3 flex justify-center gap-2 font-semibold"
+          >
+            <FaWhatsapp /> WhatsApp
+          </a>
+        </div>
         <Footer />
       </div>
     </div>

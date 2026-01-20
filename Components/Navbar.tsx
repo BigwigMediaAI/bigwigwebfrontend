@@ -405,10 +405,10 @@ const Nav: React.FC = () => {
           <nav className="flex-1 space-y-3">
             {[
               { title: "Services", slug: "/services" },
-              { title: "Our Works", slug: "/our-works" },
+              { title: "Clients", slug: "/clients" },
               { title: "About", slug: "/about" },
               { title: "Blog", slug: "/blog" },
-              { title: "Clients", slug: "/clients" },
+
               { title: "Contact Us", slug: "/contact" },
             ].map((link) => (
               <Link

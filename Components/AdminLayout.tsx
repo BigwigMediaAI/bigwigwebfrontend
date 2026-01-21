@@ -5,7 +5,14 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Briefcase, FileText, Gauge, NotebookPen, User } from "lucide-react";
+import {
+  Briefcase,
+  File,
+  FileText,
+  Gauge,
+  NotebookPen,
+  User,
+} from "lucide-react";
 import logo from "../Assets/bigwig-logo.png";
 
 interface AdminLayoutProps {
@@ -28,6 +35,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       to: "/admin/job-application",
     },
     { icon: <FileText />, label: "Job Vacancy", to: "/admin/jobs" },
+    { icon: <File />, label: "Newsletter", to: "/admin/newsletter" },
   ];
 
   // Redirect if not logged in

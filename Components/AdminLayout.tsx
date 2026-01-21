@@ -12,6 +12,7 @@ import {
   Gauge,
   NotebookPen,
   User,
+  Users2,
 } from "lucide-react";
 import logo from "../Assets/bigwig-logo.png";
 
@@ -27,14 +28,14 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   const navItems = [
     { icon: <Gauge />, label: "Dashboard", to: "/admin" },
     { icon: <NotebookPen />, label: "Blogs", to: "/admin/blogs" },
-    { icon: <User />, label: "Leads", to: "/admin/leads" },
+    { icon: <Users2 />, label: "Leads", to: "/admin/leads" },
     { icon: <User />, label: "Subscriber", to: "/admin/subscribers" },
-    {
-      icon: <Briefcase />,
-      label: "Job Application",
-      to: "/admin/job-application",
-    },
-    { icon: <FileText />, label: "Job Vacancy", to: "/admin/jobs" },
+    // {
+    //   icon: <Briefcase />,
+    //   label: "Job Application",
+    //   to: "/admin/job-application",
+    // },
+    // { icon: <FileText />, label: "Job Vacancy", to: "/admin/jobs" },
     { icon: <File />, label: "Newsletter", to: "/admin/newsletter" },
   ];
 

@@ -1,6 +1,6 @@
 "use client";
 import { JSX, useEffect, useState } from "react";
-import { FaPhoneAlt, FaBook } from "react-icons/fa";
+import { FaPhoneAlt, FaBook, FaUser } from "react-icons/fa";
 import {
   LineChart,
   Line,
@@ -41,6 +41,7 @@ interface TrafficSource {
 const Dashboard = () => {
   const [counts, setCounts] = useState({
     leads: 0,
+    subscribers: 0,
     blogs: 0,
     jobApplications: 0,
   });
@@ -52,16 +53,19 @@ const Dashboard = () => {
   useEffect(() => {
     Promise.all([
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/all`).then((r) =>
-        r.json()
+        r.json(),
+      ),
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE}/subscriber`).then((r) =>
+        r.json(),
       ),
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/blog/viewblog`).then((r) =>
-        r.json()
+        r.json(),
       ),
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/jobs/all`).then((r) =>
-        r.json()
+        r.json(),
       ),
       fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/lead/last10days`).then(
-        (r) => r.json()
+        (r) => r.json(),
       ),
       // fetch(
       //   `${process.env.NEXT_PUBLIC_API_BASE}/api/google/analytics-data`
@@ -70,9 +74,10 @@ const Dashboard = () => {
       //   (r) => r.json()
       // ),
     ])
-      .then(([leads, blogs, jobApplications, leadStats]) => {
+      .then(([leads, subscribers, blogs, jobApplications, leadStats]) => {
         setCounts({
           leads: Array.isArray(leads) ? leads.length : 0,
+          subscribers: subscribers?.count || 0,
           blogs: Array.isArray(blogs) ? blogs.length : 0,
           jobApplications: Array.isArray(jobApplications)
             ? jobApplications.length
@@ -110,6 +115,7 @@ const Dashboard = () => {
 
   const cards = [
     { title: "Leads", icon: <FaPhoneAlt />, count: counts.leads },
+    { title: "Subscribers", icon: <FaUser />, count: counts.subscribers },
     { title: "Blogs Data", icon: <FaBook />, count: counts.blogs },
     {
       title: "Job Application Data",

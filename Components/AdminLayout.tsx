@@ -21,6 +21,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     { icon: <Gauge />, label: "Dashboard", to: "/admin" },
     { icon: <NotebookPen />, label: "Blogs", to: "/admin/blogs" },
     { icon: <User />, label: "Leads", to: "/admin/leads" },
+    { icon: <User />, label: "Subscriber", to: "/admin/subscribers" },
     {
       icon: <Briefcase />,
       label: "Job Application",

@@ -215,7 +215,7 @@ export default function Footer() {
 
         {/* BOTTOM BAR */}
         <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between text-sm text-gray-500">
-          <span>© 2025 All rights Reserved by Bigwig Media</span>
+          <span>© 2026 All rights Reserved by Bigwig Media</span>
         </div>
       </div>
     </footer>

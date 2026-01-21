@@ -1,11 +1,58 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../Assets/bigwig-logo.png"; // replace if needed
+import logo from "../Assets/bigwig-logo.png";
 import { Instagram, MessageCircle, Twitter } from "lucide-react";
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      setError("Please enter your email address");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    setMessage("");
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE}/subscriber/subscribe`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        },
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || data.error || "Subscription failed");
+      }
+
+      setMessage("✅ Successfully subscribed!");
+      setEmail("");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Something went wrong");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <footer className="relative bg-black overflow-hidden">
       {/* GRID BACKGROUND */}
@@ -48,15 +95,34 @@ export default function Footer() {
           </div>
 
           {/* RIGHT */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:items-center lg:justify-end">
-            <input
-              type="email"
-              placeholder="Your Email Address"
-              className="w-full sm:w-[260px] px-6 py-3 rounded-full bg-black/60 border border-white/10 text-white placeholder-gray-400 outline-none backdrop-blur"
-            />
-            <button className="cta-border-btn w-full sm:w-auto">
-              Subscribe
-            </button>
+          <div className="flex flex-col gap-3 sm:items-start lg:items-end">
+            <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+              <input
+                type="email"
+                placeholder="Your Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full sm:w-[260px] px-6 py-3 rounded-full bg-black/60 border border-white/10 text-white placeholder-gray-400 outline-none backdrop-blur"
+              />
+              <button
+                onClick={handleSubscribe}
+                disabled={loading}
+                className="cta-border-btn w-full sm:w-auto disabled:opacity-50"
+              >
+                {loading ? "Subscribing..." : "Subscribe"}
+              </button>
+            </div>
+
+            {/* MESSAGE BELOW INPUT */}
+            {(message || error) && (
+              <p
+                className={`text-sm ${
+                  error ? "text-red-400" : "text-green-400"
+                }`}
+              >
+                {error || message}
+              </p>
+            )}
           </div>
         </div>
 
@@ -68,6 +134,7 @@ export default function Footer() {
             <p className="text-sm mb-2">Rajouri Garden, Delhi 110007, India</p>
             <p className="text-sm">+91 8368573451</p>
           </div>
+
           {/* SECTIONS */}
           <div>
             <h4 className="text-white mb-4 text-lg">Quick Links</h4>
@@ -86,6 +153,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
           {/* UTILITY */}
           <div>
             <h4 className="text-white mb-4 text-lg">Utility</h4>
@@ -98,86 +166,44 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+
           {/* SOCIAL */}
           <div>
             <h4 className="text-white mb-4 text-lg font-semibold">Social</h4>
-
             <ul className="space-y-3 text-sm">
-              {/* WhatsApp */}
               <li>
                 <Link
                   href="https://wa.me/918368573451"
                   target="_blank"
-                  className="
-          flex items-center gap-3
-          text-gray-300 hover:text-white
-          transition group
-        "
+                  className="flex items-center gap-3 text-gray-300 hover:text-white transition group"
                 >
-                  <span
-                    className="
-            w-9 h-9 rounded-xl
-            bg-white/5 border border-white/10
-            flex items-center justify-center
-            group-hover:bg-green-500/10
-            group-hover:border-green-500/30
-            transition
-          "
-                  >
+                  <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-green-500/10 group-hover:border-green-500/30 transition">
                     <MessageCircle className="w-5 h-5 text-green-400" />
                   </span>
                   WhatsApp
                 </Link>
               </li>
 
-              {/* Instagram */}
               <li>
                 <Link
                   href="https://www.instagram.com/"
                   target="_blank"
-                  className="
-          flex items-center gap-3
-          text-gray-300 hover:text-white
-          transition group
-        "
+                  className="flex items-center gap-3 text-gray-300 hover:text-white transition group"
                 >
-                  <span
-                    className="
-            w-9 h-9 rounded-xl
-            bg-white/5 border border-white/10
-            flex items-center justify-center
-            group-hover:bg-pink-500/10
-            group-hover:border-pink-500/30
-            transition
-          "
-                  >
+                  <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-pink-500/10 group-hover:border-pink-500/30 transition">
                     <Instagram className="w-5 h-5 text-pink-400" />
                   </span>
                   Instagram
                 </Link>
               </li>
 
-              {/* Twitter / X */}
               <li>
                 <Link
                   href="https://twitter.com/"
                   target="_blank"
-                  className="
-          flex items-center gap-3
-          text-gray-300 hover:text-white
-          transition group
-        "
+                  className="flex items-center gap-3 text-gray-300 hover:text-white transition group"
                 >
-                  <span
-                    className="
-            w-9 h-9 rounded-xl
-            bg-white/5 border border-white/10
-            flex items-center justify-center
-            group-hover:bg-sky-500/10
-            group-hover:border-sky-500/30
-            transition
-          "
-                  >
+                  <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-sky-500/10 group-hover:border-sky-500/30 transition">
                     <Twitter className="w-5 h-5 text-sky-400" />
                   </span>
                   Twitter
